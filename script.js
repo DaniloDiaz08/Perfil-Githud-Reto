@@ -22,7 +22,7 @@ async function getRepos(username) {
         const { data } = await axios(APIURL + username + '/repos?sort=created')
 
         addReposToCard(data)
-    } catch (herr) {
+    } catch (error) {
         createErrorCard('Algún Problem? fetching repos')
     }
 }
@@ -30,7 +30,7 @@ async function getRepos(username) {
 function createUserCard(user) {
     const cardHTML = `
     <div class="card">
-    <diva>
+    <div>
       <img src="${user.avatar_url}" alt="${user.name}" class="avatar">
     </div>
     <div class="user-info">
@@ -64,14 +64,14 @@ function addReposToCard(repos) {
 
     repos
         .slice(0, 5)
-        .forEach(repollito => {
-            const repoEl = document.createElement('a')
-            repoEl.classList.add('repollito')
-            repoEl.href = repollito.html_url
+        .forEach(repos => {
+            const repoEl = document.createElement('repos')
+            repoEl.classList.add('repos')
+            repoEl.href = repos.html_url
             repoEl.target = '_blank'
-            repoEl.innerText = repollito.name
+            repoEl.innerText = repos.name
 
-            reposEl.appendChild(repollito)
+            reposEl.appendChild(repos)
         })
 }
 
