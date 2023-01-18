@@ -60,18 +60,18 @@ function createErrorCard(msg) {
 }
 
 function addReposToCard(repos) {
-    const reposEl = document.getElementById('repos')
+    const elementoDiv = document.getElementById('repos')
 
     repos
         .slice(0, 5)
         .forEach(repos => {
-            const repoEl = document.createElement('repos')
-            repoEl.classList.add('repos')
+            const repoEl = document.createElement('a')
+            repoEl.classList.add('repo')
             repoEl.href = repos.html_url
             repoEl.target = '_blank'
             repoEl.innerText = repos.name
 
-            reposEl.appendChild(repos)
+            elementoDiv.appendChild(repoEl)
         })
 }
 
